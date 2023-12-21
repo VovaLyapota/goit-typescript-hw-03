@@ -14,7 +14,7 @@ class Person {
   constructor(private key: Key) {}
 
   getKey() {
-    return this.key.getSignature();
+    return this.key;
   }
 }
 
@@ -30,12 +30,12 @@ abstract class House {
     }
   }
 
-  openDoor(key: number): void {}
+  openDoor(key: Key): void {}
 }
 
 class MyHouse extends House {
-  openDoor(key: number): void {
-    if (key === this.key.getSignature()) {
+  openDoor(key: Key): void {
+    if (key.getSignature() === this.key.getSignature()) {
       this.door = true;
     } else {
       console.log("There is an invalid key!");
